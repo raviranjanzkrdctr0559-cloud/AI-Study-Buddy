@@ -1,27 +1,34 @@
-const dictionary = {
-  distance: "Distance means the length between two places or points. (दूरी)",
-  apple: "Apple means a fruit. (सेब)",
-  book: "Book means a collection of written pages. (पुस्तक)",
-  school: "School means a place where students study. (विद्यालय)",
-  computer: "Computer is an electronic machine. (कंप्यूटर)",
-  water: "Water is a liquid necessary for life. (पानी)",
-  teacher: "Teacher means a person who teaches. (शिक्षक)",
-  student: "Student means a learner. (विद्यार्थी)"
-};
+async function getMeaning() {
 
-function getAnswer() {
+let word = document.getElementById("word").value.trim();
+let answer = document.getElementById("answer");
 
-  let word = document.getElementById("question").value.toLowerCase().trim();
-  let answer = document.getElementById("answer");
+if(word === ""){
+answer.innerHTML = "Please enter a word.";
+return;
+}
 
-  if(word === ""){
-    answer.innerHTML = "Please enter a word.";
-    return;
-  }
+answer.innerHTML = "Searching...";
 
-  if(dictionary[word]){
-    answer.innerHTML = "📖 Meaning:<br><br>" + dictionary[word];
-  } else {
-    answer.innerHTML = "❌ Word not found in dictionary.";
-  }
+try{
+
+let response = await fetch(
+`https://api.dictionaryapi.dev/api/v2/entries/en/${word}`
+);
+
+let data = await response.json();
+
+let meaning =
+data[0].meanings[0].definitions[0].definition;
+
+answer.innerHTML =
+`<h3>${word}</h3><p>${meaning}</p>`;
+
+}
+catch{
+
+answer.innerHTML =
+"❌ Meaning not found.";
+}
+
 }
