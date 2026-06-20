@@ -19,7 +19,8 @@ let response = await fetch(
 let data = await response.json();
 
 let meaning =
-data[0].meanings[0].definitions[0].definition;
+data?.[0]?.meanings?.[0]?.definitions?.[0]?.definition ||
+"No meaning found";
 
 let translateResponse = await fetch(
 `https://api.mymemory.translated.net/get?q=${word}&langpair=en|hi`
