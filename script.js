@@ -29,8 +29,8 @@ let translateResponse = await fetch(
 let translateData = await translateResponse.json();
 
 let hindiMeaning =
-translateData.responseData.translatedText;
-
+translateData?.responseData?.translatedText ||
+"Translation not available";
 answer.innerHTML = `
 <h3>${word}</h3>
 
@@ -40,14 +40,22 @@ answer.innerHTML = `
 `;
 
 }
-catch{
-
+catch (error) {
+console.log(error);
+answer.innerHTML = "❌ Meaning not found or API error";
+}
 answer.innerHTML =
 "❌ Meaning not found.";
 }
 
 }
 function startVoice() {
+  function startVoice() {
+
+if (!("SpeechRecognition" in window || "webkitSpeechRecognition" in window)) {
+alert("Voice not supported in this browser");
+return;
+}
 
 const recognition =
 new(window.SpeechRecognition ||
