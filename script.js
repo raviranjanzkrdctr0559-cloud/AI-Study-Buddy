@@ -42,7 +42,7 @@ answer.innerHTML = `
 
 } catch (error) {
 console.log(error);
-answer.innerHTML = "❌ Error fetching meaning";
+answer.innerHTML = "❌ API error / internet problem";
 }
 
 }
@@ -77,7 +77,7 @@ function speakWord() {
 let word = document.getElementById("word").value.trim();
 
 if(word === ""){
-alert("Please enter a word");
+alert("Please enter word");
 return;
 }
 
@@ -87,4 +87,3 @@ speech.lang = "en-US";
 window.speechSynthesis.speak(speech);
 
 }
-alert("JS CONNECTED");
