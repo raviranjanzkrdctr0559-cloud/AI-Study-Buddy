@@ -19,6 +19,14 @@ let response = await fetch(
 let data = await response.json();
 
 let meaning =
+let translateResponse = await fetch(
+`https://api.mymemory.translated.net/get?q=${word}&langpair=en|hi`
+);
+
+let translateData = await translateResponse.json();
+
+let hindiMeaning =
+translateData.responseData.translatedText;
 data[0].meanings[0].definitions[0].definition;
 
 answer.innerHTML =
