@@ -1,7 +1,8 @@
 {
-  "name":"Createing by Arjun kr",
-  "short_name": " Arjun study Buddy",
-  "start_url": "/AI-Study-Buddy/"
+  "name": "Createing by Arjun kr",
+  "short_name": "Arjun Study Buddy",
+  "start_url": "/AI-Study-Buddy/",
+  "scope": "/AI-Study-Buddy/",
   "display": "standalone",
   "background_color": "#ffffff",
   "theme_color": "#2196f3",
