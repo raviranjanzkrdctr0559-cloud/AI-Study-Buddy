@@ -50,3 +50,19 @@ event.results[0][0].transcript;
 };
 
 }
+function speakWord() {
+
+let word = document.getElementById("word").value;
+
+if(word === ""){
+alert("Please enter a word.");
+return;
+}
+
+let speech = new SpeechSynthesisUtterance(word);
+
+speech.lang = "en-US";
+
+window.speechSynthesis.speak(speech);
+
+}
