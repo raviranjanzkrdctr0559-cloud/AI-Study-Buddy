@@ -87,3 +87,4 @@ speech.lang = "en-US";
 window.speechSynthesis.speak(speech);
 
 }
+alert("JS CONNECTED");
