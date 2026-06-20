@@ -10,7 +10,7 @@ return;
 
 answer.innerHTML = "Searching...";
 
-try{
+try {
 
 let response = await fetch(
 `https://api.dictionaryapi.dev/api/v2/entries/en/${word}`
@@ -30,27 +30,21 @@ let translateData = await translateResponse.json();
 
 let hindiMeaning =
 translateData?.responseData?.translatedText ||
-"Translation not available";
+"No translation available";
+
 answer.innerHTML = `
 <h3>${word}</h3>
-
 <p><b>English Meaning:</b><br>${meaning}</p>
-
 <p><b>Hindi Translation:</b><br>${hindiMeaning}</p>
 `;
 
-}
-catch (error) {
+} catch (error) {
 console.log(error);
 answer.innerHTML = "❌ Meaning not found or API error";
-}
-answer.innerHTML =
-"❌ Meaning not found.";
 }
 
 }
 function startVoice() {
-  function startVoice() {
 
 if (!("SpeechRecognition" in window || "webkitSpeechRecognition" in window)) {
 alert("Voice not supported in this browser");
@@ -58,24 +52,21 @@ return;
 }
 
 const recognition =
-new(window.SpeechRecognition ||
-window.webkitSpeechRecognition)();
+new (window.SpeechRecognition || window.webkitSpeechRecognition)();
 
 recognition.lang = "en-US";
 
 recognition.start();
 
 recognition.onresult = function(event) {
-
 document.getElementById("word").value =
 event.results[0][0].transcript;
-
 };
 
 }
 function speakWord() {
 
-let word = document.getElementById("word").value;
+let word = document.getElementById("word").value.trim();
 
 if(word === ""){
 alert("Please enter a word.");
@@ -83,7 +74,6 @@ return;
 }
 
 let speech = new SpeechSynthesisUtterance(word);
-
 speech.lang = "en-US";
 
 window.speechSynthesis.speak(speech);
