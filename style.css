@@ -41,3 +41,44 @@ width:120px;
 display:block;
 margin:10px auto;
 }
+.hero{
+text-align:center;
+background:white;
+padding:40px;
+border-radius:20px;
+margin-bottom:20px;
+box-shadow:0 4px 10px rgba(0,0,0,0.1);
+}
+
+.hero h1{
+font-size:45px;
+color:#0d6efd;
+margin-bottom:15px;
+}
+
+.hero h2{
+font-size:55px;
+margin-bottom:10px;
+}
+
+.hero p{
+font-size:22px;
+margin-bottom:20px;
+color:#555;
+}
+
+.hero button{
+background:#0d6efd;
+color:white;
+border:none;
+padding:15px 30px;
+font-size:18px;
+border-radius:10px;
+cursor:pointer;
+}
+
+.logo{
+width:120px;
+display:block;
+margin:10px auto;
+}
